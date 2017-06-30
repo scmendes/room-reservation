@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reserva de sala</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>	
+    <script src="reservas.js"></script>
+    
+<style type="text/css">
+table, th, td {
+	border: 0px gray;
+}
+
+h2{
+	color: red;
+}
+
+table {
+	width: 100%;
+}
+
+th {
+	height: 50px;
+	background-color: gray;
+	color: white;
+}
+
+.registrar {
+	width: 70%; 
+}
+
+.zebra_stripe tbody tr:nth-child(even) td, .zebra_stripe tbody tr.even td {
+    background:#f2f2f2;
+}
+
+
+.modalWindow {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0.2);
+	z-index: 99999;
+	opacity: 0;
+	pointer-events: none;
+	text-align: center;
+}
+
+.modalWindow:target {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+.modalWindow>div {
+	width: 500px;
+	height: 150px; position : relative;
+	margin: 10% auto;
+	background: #f2f2f2;
+	border: 1px;
+	color: black;
+	position: relative;
+}
+
+</style>
+</head>
+
+<body onload="find('');">
+
+	<header>
+	  <h1>Reserva de salas</h1>
+	  <h2> <label id="message">MESSAGE</label> </h2>
+
+	</header>
+	
+	<div style="overflow-x:auto;">
+		<table id="lista-reservas" class="zebra_stripe">
+		</table>
+	</div>
+	
+	<br>
+	
+	<form id="formRegistrar" name="formRegistrar" method="post">
+	
+		<input type="hidden" id="key" name="key"/>
+		<div>
+			<table id="registro" class="registrar">
+				<tr>
+					<td> <label for="businessUnit">*Local:</label></td>
+					<td>
+					
+						<select id="businessUnit" name="businessUnit" required="required">
+						  <option value="FILIAL">FILIAL</option>
+						  <option value="MATRIZ">MATRIZ</option>
+						</select>				
+					</td>
+				</tr>
+				<tr>
+					<td> <label for="sala">*Sala:</label></td>
+					<td>
+						<select id="room" name="room" required="required">
+						  <option value="ANFITEATRO">ANFITEATRO</option>
+						  <option value="SALA PRESIDENCIAL">SALA PRESIDENCIAL</option>
+						  <option value="SALA PRINCIPAL">SALA PRINCIPAL</option>
+						</select>				
+					</td>
+				</tr>
+				<tr>
+					<td> <label for="initDate">*Data e Hora de início:</label></td>
+					<td>
+						<input id="initDate" name="initDate" type="datetime-local" required="required"/>
+					</td>
+				</tr>
+				<tr>
+					<td> <label for="endDate">*Data e Hora de término:</label></td>
+					<td>
+						<input id="endDate" name="endDate" type="datetime-local" required="required"/>
+					</td>
+				</tr>
+				<tr>
+					<td> <label for="responsable">*Responsável:</label></td>
+					<td>
+						<input id="responsable" name="responsable" size="50" required="required"/>
+					</td>
+				</tr>
+				<tr>
+					<td> <label for="description">*Descricao:</label></td>
+					<td>
+						<textarea id="description" name="description" rows="5" cols="70" required="required"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td> 
+						<input id="hasCoffeeBreak" name="hasCoffeeBreak" type="checkbox" 
+							checked="checked" onclick="setCoffeeBreak(this);"/>
+						<label for="peopleToCoffeeBreak"> Coffee break </label></td>
+					<td>
+						<input id="peopleToCoffeeBreak" type="number" onblur="setHasCoffeeBreak(this);"
+						disabled="disabled" name="peopleToCoffeeBreak" min="1" max="1000" size="2"/> (nro. de pessoas)
+					</td>
+				</tr>
+				
+		 	</table>
+		</div>
+		<br>
+		<div>
+			<input type="button" value="Salvar" onclick="save();">
+			<input type="button" value="Cancelar" onclick="cancel();">
+		</div>
+	</form>	
+	
+	<div id="openModal" class="modalWindow">
+	    <div>
+	        <h1>Remover este agendamento?</h1>
+	        <hr>
+	        <p>Confirma a remocao do agendamento?</p>
+	        
+	        <a href="#remove" title="Remover" onclick="remove();">Remover</a>
+	        <a href="#ok" title="Cancelar" onclick="cancel();">Cancelar</a>
+	    </div>
+	</div>	
+	
+</body>
+</html>
+
