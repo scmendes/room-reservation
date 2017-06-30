@@ -15,6 +15,15 @@ Estão disponíveis as operaçoes de Criar, Listar, Atualizar e Remover.
 - Spring boot data rest
 - Maven
 
+### Execução via linha de comando
+
+- Pré-requisito: Java 8 instalado na estação de trabalho
+- Pré-requisito: build efetuada: maven clean install
+Ir até a pasta target e executar o comando abaixo:
+```sh
+$ java -jar room-reservation-silvio-0.1.0.jar
+```
+
 ### Execução via maven em linha de comando
 - Pré-requisito: Maven instalado na estação de trabalho
 - No diretório raiz, execute o seguinte comando para efetuar a compilação, construção e fazer o deploy da a aplicação:
@@ -28,16 +37,6 @@ $ mvn spring-boot:run
 $ Run >> maven clean package install
 $ Run >> java application (from the Application.java)
 ```
-
-### Execução via linha de comando
-
-- Pré-requisito: Java 8 instalado na estação de trabalho
-- Pré-requisito: build efetuada: maven clean install
-Ir até a pasta target e executar o comando abaixo:
-```sh
-$ java -jar room-reservation-silvio-0.1.0.jar
-```
-
 
 ### Uso
 Na barra de endereços do navegador digite: `http://localhost:8080` para ingressar na aplicação.
