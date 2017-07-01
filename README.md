@@ -18,8 +18,8 @@ Estão disponíveis as operaçoes de Criar, Listar, Atualizar e Remover.
 ### Execução via linha de comando
 
 - Pré-requisito: Java 8 instalado na estação de trabalho
-- Pré-requisito: build efetuada: maven clean install
-Ir até a pasta target e executar o comando abaixo:
+- Pré-requisito: build efetuada com o comando "maven clean install"
+- Ir até a pasta target e executar o comando abaixo:
 ```sh
 $ java -jar room-reservation-silvio-0.1.0.jar
 ```
